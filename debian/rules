@@ -1,21 +1,37 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-#
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
-#
-# Modified to make a template file for a multi-binary package with separated
-# build-arch and build-indep targets  by Bill Allombert 2001
-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
+DEBVERSION:=$(shell dpkg-parsechangelog | sed -n -e 's/Version: //p')
+DEB_NOEPOCH_VERSION:=$(shell echo $(DEBVERSION) | cut -d':' -f 2)
+DEB_SRC_VERSION:=$(shell echo $(DEB_NOEPOCH_VERSION) | sed -e 's/-[^-]\+$$//')
+UPVERSION:=$(shell echo $(DEB_SRC_VERSION) | sed -e 's/[.~]dfsg//' -e 's/~\(\(rc\|beta\)[0-9]\)/-\1/')
+
+FILENAME := polycom-ucs_$(DEB_SRC_VERSION).orig.tar.gz
+UPFILENAME := polycom-ucs_$(UPVERSION).zip
+URL := http://downloads.polycom.com/voice/voip/uc/UC_Software_3_3_4_release_sig_split.zip
 
 %:
 	dh  $@
+
+print-version:
+	@@echo "Debian version:          $(DEBVERSION)"
+	@@echo "Upstream version:        $(UPVERSION)"
+
+get-orig-source:
+	@@dh_testdir
+	@@[ -d ../tarballs/. ] || mkdir -p ../tarballs
+	@echo Downloading $(UPFILENAME) from $(URL) ...
+	@wget -nv -T10 -t3 -O ../tarballs/$(UPFILENAME) $(URL)
+	@echo Repacking as DFSG-free ...
+	@mkdir -p ../tarballs/polycom-ucs-$(UPVERSION).tmp
+	@cd ../tarballs/polycom-ucs-$(UPVERSION).tmp ; \
+		unzip ../$(UPFILENAME)
+	@cd ../tarballs/polycom-ucs-$(UPVERSION).tmp ; \
+		tar cf - * | gzip -9 >../$(FILENAME)
+	@echo Cleaning up...
+	@$(RM) -rf ../tarballs/polycom-ucs-$(UPVERSION).tmp
+	@$(RM) -rf ../tarballs/$(UPFILENAME)

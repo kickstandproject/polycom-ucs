@@ -7,7 +7,7 @@ Standards-Version: 3.8.3
 Homepage: <insert the upstream URL, if relevant>
 
 Package: polycom-ucs
-Architecture: any
+Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
