@@ -1,0 +1,5 @@
+polycom-ucs (3.3.4-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Paul Belanger <paul.belanger@polybeacon.com>  Wed, 28 Mar 2012 13:56:13 -0400
