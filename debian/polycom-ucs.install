@@ -1,1 +1,2 @@
 *.ld	var/lib/polycom-ucs
+debian/configs/*.cfg	var/lib/polycom-ucs

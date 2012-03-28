@@ -1,1 +1,3 @@
 var/lib/polycom-ucs
+var/lib/polycom-ucs/configs
+var/lib/polycom-ucs/logs
