@@ -20,6 +20,7 @@ URL := http://downloads.polycom.com/voice/voip/uc/UC_Software_3_3_4_release_sig_
 print-version:
 	@@echo "Debian version:          $(DEBVERSION)"
 	@@echo "Upstream version:        $(UPVERSION)"
+	@@echo "Filename:                $(FILENAME)"
 
 get-orig-source:
 	@@dh_testdir
