@@ -1,6 +1,6 @@
 Source: polycom-ucs
-Section: unknown
-Priority: extra
+Section: comm
+Priority: optional
 Maintainer: Paul Belanger <paul.belanger@polybeacon.com>
 Build-Depends: debhelper (>= 7)
 Standards-Version: 3.8.3
