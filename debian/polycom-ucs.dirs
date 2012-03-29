@@ -1,4 +1,2 @@
-var/lib/polycom-ucs
-var/lib/polycom-ucs/configs
-var/lib/polycom-ucs/firmwares
-var/lib/polycom-ucs/logs
+usr/share/polycom-ucs
+usr/share/polycom-ucs/firmwares

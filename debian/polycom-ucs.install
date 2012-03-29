@@ -1,2 +1,1 @@
-*.ld	var/lib/polycom-ucs/firmwares
-debian/configs/*.cfg	var/lib/polycom-ucs
+*.ld	usr/share/polycom-ucs/firmwares
