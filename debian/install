@@ -1,2 +1,5 @@
 *.ld	usr/share/polycom-ucs/firmwares
 *.jpg	usr/share/polycom-ucs/images
+
+Config/sip-interop.cfg	usr/share/polycom-ucs/configs
+Config/site.cfg 	usr/share/polycom-ucs/configs
